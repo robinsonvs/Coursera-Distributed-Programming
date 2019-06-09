@@ -15,8 +15,8 @@
       <file leaf-file-name="SparkTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/edu/coursera/distributed/SparkTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="75">
+              <caret line="290" column="34" lean-forward="true" selection-start-line="290" selection-start-column="34" selection-end-line="290" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -27,10 +27,10 @@
       <file leaf-file-name="PageRank.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/coursera/distributed/PageRank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="62" column="56" lean-forward="true" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
+            <state relative-caret-position="296">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
               <folding>
-                <element signature="e#2635#2660#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,6 +51,12 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>webSiteId</find>
+      <find>websiteId</find>
+    </findStrings>
   </component>
   <component name="GradleLocalSettings">
     <option name="projectSyncType">
@@ -281,7 +287,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SparkTest - 2019.06.08 at 21h 01m 02s.xml">
+    <history-entry file="SparkTest - 2019.06.08 at 22h 01m 25s.xml">
+      <configuration name="SparkTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SparkTest - 2019.06.09 at 01h 13m 59s.xml">
+      <configuration name="SparkTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SparkTest - 2019.06.09 at 01h 14m 38s.xml">
+      <configuration name="SparkTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SparkTest - 2019.06.09 at 01h 16m 15s.xml">
+      <configuration name="SparkTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SparkTest - 2019.06.09 at 01h 18m 24s.xml">
+      <configuration name="SparkTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SparkTest - 2019.06.09 at 01h 20m 33s.xml">
+      <configuration name="SparkTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SparkTest - 2019.06.09 at 01h 22m 56s.xml">
+      <configuration name="SparkTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SparkTest - 2019.06.09 at 01h 32m 50s.xml">
+      <configuration name="SparkTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SparkTest - 2019.06.09 at 01h 41m 09s.xml">
+      <configuration name="SparkTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SparkTest - 2019.06.09 at 01h 47m 02s.xml">
       <configuration name="SparkTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -291,20 +324,20 @@
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Messages" weight="0.32954547" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info id="Image Layers" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" weight="0.32980332" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32954547" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41558442" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="SonarLint" />
+      <window_info anchor="bottom" id="SonarLint" weight="0.32954547" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" />
@@ -323,16 +356,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/edu/coursera/distributed/SparkTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/coursera/distributed/Website.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-696">
@@ -343,12 +366,22 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/coursera/distributed/package-info.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/edu/coursera/distributed/SparkTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="290" column="34" lean-forward="true" selection-start-line="290" selection-start-column="34" selection-end-line="290" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/coursera/distributed/PageRank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="62" column="56" lean-forward="true" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
+        <state relative-caret-position="296">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
           <folding>
-            <element signature="e#2635#2660#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

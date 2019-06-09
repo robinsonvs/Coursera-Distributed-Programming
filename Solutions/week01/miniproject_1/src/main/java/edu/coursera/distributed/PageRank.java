@@ -1,10 +1,8 @@
 package edu.coursera.distributed;
 
-import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaPairRDD;
 import scala.Tuple2;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -57,28 +55,21 @@ public final class PageRank {
         //throw new UnsupportedOperationException();
 
         JavaPairRDD<Integer, Double> newRanks =
-                sites.
-                        join(ranks).
-                        flatMapToPair(kv -> {
-                            Integer webSiteId = kv._1();
-                            Tuple2<Website, Double> value = kv._2();
-                            Website edges = kv._2()._1;
+                sites.join(ranks)
+                        .flatMapToPair(kv -> {
+                            Website website = kv._2()._1;
                             Double currentRank = kv._2()._2();
 
-                            List<Tuple2<Integer, Double>> contribs =
-                                    new LinkedList<Tuple2<Integer, Double>>();
-                            Iterator<Integer> iter = edges.edgeIterator();
+                            List<Tuple2<Integer, Double>> contribs = new LinkedList<>();
 
-                            while (iter.hasNext()) {
-                                final int target = iter.next();
-                                contribs.add(new Tuple2<>(target,
-                                        currentRank / (double) edges.getNEdges()));
-                            }
+                            website.edgeIterator().forEachRemaining(target -> {
+                                        contribs.add(new Tuple2(target, currentRank / (double) website.getNEdges()));
+                                    }
+                            );
                             return contribs;
                         });
 
-        return newRanks.reduceByKey((Double r1, Double r2) -> r1 + r2)
-                .mapValues(v -> 0.15 + 0.85 + v);
-
+        return newRanks.reduceByKey((d1, d2) -> d1 + d2)
+                .mapValues(v -> 0.15 + 0.85 * v);
     }
 }
