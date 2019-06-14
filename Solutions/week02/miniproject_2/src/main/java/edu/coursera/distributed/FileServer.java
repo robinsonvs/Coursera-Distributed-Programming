@@ -1,12 +1,9 @@
 package edu.coursera.distributed;
 
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.File;
+import java.nio.file.Files;
 
 /**
  * A basic and very limited implementation of a file server that responds to GET
@@ -33,9 +30,10 @@ public final class FileServer {
         while (true) {
 
             // TODO Delete this once you start working on your solution.
-            throw new UnsupportedOperationException();
+            //throw new UnsupportedOperationException();
 
             // TODO 1) Use socket.accept to get a Socket object
+            Socket socket1 = socket.accept();
 
             /*
              * TODO 2) Using Socket.getInputStream(), parse the received HTTP
@@ -46,6 +44,15 @@ public final class FileServer {
              *
              *     GET /path/to/file HTTP/1.1
              */
+
+            InputStream stream = socket1.getInputStream();
+            InputStreamReader reader = new InputStreamReader(stream);
+            BufferedReader buffered = new BufferedReader(reader);
+
+            String line = buffered.readLine();
+            assert line != null;
+            assert line.startsWith("GET");
+            final PCDPPath path = new PCDPPath(line.split(" ")[1]);
 
             /*
              * TODO 3) Using the parsed path to the target file, construct an
@@ -67,6 +74,24 @@ public final class FileServer {
              *
              * Don't forget to close the output stream.
              */
+
+            String contents = fs.readFile(path);
+
+            OutputStream out = socket1.getOutputStream();
+            PrintWriter printer = new PrintWriter(out);
+
+            if (contents != null) {
+                printer.write("HTTP/1.0 200 OK\r\n");
+                printer.write("Server: FileServer\r\n");
+                printer.write("\r\n");
+                printer.write(contents);
+            } else {
+                printer.write("HTTP/1.0 404 Not Found\r\n");
+                printer.write("Server: FileServer\r\n");
+                printer.write("\r\n");
+            }
+            printer.close();
         }
+
     }
 }
