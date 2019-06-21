@@ -59,17 +59,15 @@ public class MatrixMult {
         final int nRows = c.getNRows();
         final int rowChunk = (nRows + size - 1) / size;
         final int startRow = myRank * rowChunk;
+
         int endRow = (myRank + 1) * rowChunk;
         if (endRow > nRows) endRow = nRows;
 
-        // For simplicity, broadcast all of matrices a & b to all ranks
-        // A more efficient approach would be o only send the relevant rows / columns to reach rank
         mpi.MPI_Bcast(a.getValues(), 0, a.getNRows() * a.getNCols(), 0,
                 mpi.MPI_COMM_WORLD);
         mpi.MPI_Bcast(b.getValues(), 0, b.getNRows() * b.getNCols(), 0,
                 mpi.MPI_COMM_WORLD);
 
-        // Compute answer for rows assigned to this rank
         for (int i = startRow; i < endRow; i++) {
             for (int j = 0; j < c.getNCols(); j++) {
                 c.set(i, j, 0.0);
@@ -82,8 +80,9 @@ public class MatrixMult {
 
         if (myRank == 0) {
             MPI.MPI_Request[] requests = new MPI.MPI_Request[size - 1];
+
             for (int i = 1; i < size; i++) {
-                final int rankStartRow = i * rowChunk;
+                int rankStartRow = i * rowChunk;
                 int rankEndRow = (i + 1) * rowChunk;
                 if (rankEndRow > nRows) rankEndRow = nRows;
 
@@ -93,7 +92,9 @@ public class MatrixMult {
                 requests[i - 1] = mpi.MPI_Irecv(c.getValues(), rowOffSet,
                         nElements, i, i, mpi.MPI_COMM_WORLD);
             }
+
             mpi.MPI_Waitall(requests);
+
         } else {
             mpi.MPI_Send(c.getValues(), startRow * c.getNCols(),
                     (endRow - startRow) * c.getNCols(), 0, myRank,
