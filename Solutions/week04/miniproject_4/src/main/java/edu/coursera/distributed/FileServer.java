@@ -1,12 +1,9 @@
 package edu.coursera.distributed;
 
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.File;
+import java.nio.file.Files;
 
 /**
  * A basic and very limited implementation of a file server that responds to GET
@@ -37,9 +34,10 @@ public final class FileServer {
         while (true) {
 
             // TODO Delete this once you start working on your solution.
-            throw new UnsupportedOperationException();
+            //throw new UnsupportedOperationException();
 
             // TODO 1) Use socket.accept to get a Socket object
+            Socket conn = socket.accept();
 
             /*
              * TODO 2) Now that we have a new Socket object, handle the parsing
@@ -77,6 +75,45 @@ public final class FileServer {
              * If you wish to do so, you are free to re-use code from
              * MiniProject 2 to help with completing this MiniProject.
              */
+
+            Thread thread = new Thread(
+                    () -> {
+                        try {
+                            InputStream stream = conn.getInputStream();
+                            InputStreamReader reader = new InputStreamReader(stream);
+                            BufferedReader buffered = new BufferedReader(reader);
+
+                            String line = buffered.readLine();
+                            assert line != null;
+                            assert line.startsWith("GET");
+
+                            final PCDPPath path = new PCDPPath(line.split(" ")[1]);
+                            final String contents = fs.readFile(path);
+
+                            OutputStream out = conn.getOutputStream();
+                            PrintStream printer = new PrintStream(out);
+
+                            if (null == contents) {
+                                printer.print("HTTP/1.0 404 Not Found\r\n");
+                                printer.print("Server: FileServer\r\n");
+                                printer.print("\r\n");
+                            } else {
+                                printer.print("HTTP/1.0 200 OK\r\n");
+                                printer.print("Server: FileServer\r\n");
+                                printer.print("Content-Length: " + contents.length() + "\r\n");
+                                printer.print("\r\n");
+                                printer.print(contents);
+                                printer.print("\r\n");
+                            }
+
+                            out.close();
+                            conn.close();
+                            printer.close();
+                        } catch (Exception ex) {}
+                    }
+            );
+
+            thread.start();
         }
     }
 }
