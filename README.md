@@ -1,6 +1,6 @@
-# Distributed Programming Coursera #
+## Distributed Programming Coursera #
 
-## _This is the third and last course in [Parallel, Concurrent, and Distributed Programming in Java Specialization by Rice University in Coursera](https://www.coursera.org/specializations/pcdp)_
+### _This is the third and last course in [Parallel, Concurrent, and Distributed Programming in Java Specialization by Rice University in Coursera](https://www.coursera.org/specializations/pcdp)_
 
 An introductory course of  Distributed Programming in Java by Rice university in Coursera 
 Where I've learnt the follwing skills:
